@@ -1,0 +1,230 @@
+/* =========================================
+   Variables - Customize colors and fonts here
+   ========================================= */
+
+/* Light mode defaults */
+:root {
+    --primary-color: #007bff; /* Main accent color (blue) */
+    --secondary-color: #6c757d; /* Gray for text/icons */
+    --background-color: #f8f9fa; /* Light background */
+    --text-color: #212529; /* Dark text */
+    --border-color: #ced4da; /* Borders */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Soft shadow */
+    --hover-shadow: rgba(0, 0, 0, 0.2); /* Deeper on hover */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Modern system font */
+    --font-size-base: 1rem; /* Base font size */
+    --border-radius: 8px; /* Rounded corners */
+    --transition-time: 0.3s ease; /* Smooth transitions */
+}
+
+/* Dark mode overrides */
+.dark-mode {
+    --primary-color: #0d6efd; /* Slightly brighter blue */
+    --secondary-color: #adb5bd; /* Light gray */
+    --background-color: #343a40; /* Dark background */
+    --text-color: #f8f9fa; /* Light text */
+    --border-color: #495057; /* Dark borders */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Deeper shadows */
+    --hover-shadow: rgba(0, 0, 0, 0.7);
+}
+
+/* =========================================
+   General Styles
+   ========================================= */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    transition: background-color var(--transition-time), color var(--transition-time);
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive container adjustments */
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        height: auto !important; /* Allow scrolling on mobile */
+        position: relative !important; /* Not sticky on small screens */
+    }
+    .main-content {
+        padding: 15px;
+    }
+}
+
+/* =========================================
+   Buttons (.btn) - With hover effects
+   ========================================= */
+.btn {
+    transition: transform var(--transition-time), box-shadow var(--transition-time), background-color var(--transition-time);
+}
+
+.btn:hover {
+    transform: scale(1.05); /* Slight scale up */
+    box-shadow: 0 4px 8px var(--hover-shadow);
+}
+
+/* Specific button variants (overrides Bootstrap if needed) */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    border-color: darken(var(--primary-color), 10%);
+}
+
+/* =========================================
+   Navbar/Sidebar (.navbar or .sidebar) - Sticky with shadow
+   ========================================= */
+.sidebar {
+    background-color: var(--background-color);
+    padding: 15px;
+    height: 100vh;
+    position: sticky; /* Sticky navigation */
+    top: 0;
+    box-shadow: 0 4px 6px var(--shadow-color); /* Subtle shadow */
+    transition: background-color var(--transition-time), box-shadow var(--transition-time);
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+.sidebar h4 {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        box-shadow: none; /* Remove shadow on mobile for cleaner look */
+    }
+}
+
+/* For a top navbar if added later */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    z-index: 1000;
+}
+
+/* =========================================
+   Cards (.card) - Rounded corners and shadows
+   ========================================= */
+.card, .list-group-item {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: transform var(--transition-time), box-shadow var(--transition-time);
+    margin-bottom: 10px;
+}
+
+.card:hover, .list-group-item:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 6px 12px var(--hover-shadow);
+}
+
+/* Active item highlight */
+.file-item.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* =========================================
+   Editor (#editor) - Modern textarea styling
+   ========================================= */
+#editor {
+    width: 100%;
+    height: 400px;
+    font-family: monospace;
+    font-size: 14px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: inset 0 2px 4px var(--shadow-color); /* Inner shadow for depth */
+    transition: background-color var(--transition-time), color var(--transition-time), box-shadow var(--transition-time);
+    resize: vertical; /* Allow resizing */
+}
+
+#editor:focus {
+    outline: none;
+    box-shadow: inset 0 2px 4px var(--hover-shadow), 0 0 0 0.25rem rgba(var(--primary-color), 0.25); /* Focus ring */
+}
+
+@media (max-width: 768px) {
+    #editor {
+        height: 300px; /* Smaller on mobile */
+    }
+}
+
+/* =========================================
+   Footer (.footer) - With social icons
+   ========================================= */
+.footer {
+    background-color: var(--background-color);
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -2px 4px var(--shadow-color); /* Subtle top shadow */
+    transition: background-color var(--transition-time);
+}
+
+.social-icons {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color var(--transition-time), transform var(--transition-time);
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2); /* Grow on hover */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+/* =========================================
+   Drag-over highlight
+   ========================================= */
+.drag-over {
+    background-color: lighten(var(--background-color), 5%); /* Subtle highlight */
+}
+
+.dark-mode.drag-over {
+    background-color: darken(var(--background-color), 5%);
+}
+
+/* =========================================
+   Dark Mode Specific Overrides
+   ========================================= */
+.dark-mode .sidebar,
+.dark-mode .card,
+.dark-mode .list-group-item,
+.dark-mode #editor {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+.dark-mode .file-item.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
